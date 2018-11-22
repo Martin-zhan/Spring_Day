@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+   <context:annotation-config/>
+    <util:list id="list">
+        <value>一</value>
+        <value>四</value>
+        <value>二</value>
+        <value>三</value>
+    </util:list>
+    <bean id="users" class="com.martin.pojo.User" scope="singleton">
+        <property name="username" value="黑皮"></property>
+        <property name="array">
+            <list>
+                <value>1</value>
+                <value>3</value>
+                <value>2</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>3</value>
+                <value>2</value>
+                <value>1</value>
+                <value>3</value>
+                <value>4</value>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="11"></entry>
+                <entry key="2" value="12"></entry>
+                <entry key="1" value="111"></entry>
+                <entry key="4" value="44"></entry>
+                <entry key="1" value="11"></entry>
+                <entry key="3" value="33"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="一">一</prop>
+                <prop key="三">三</prop>
+                <prop key="二">二</prop>
+                <prop key="一">一</prop>
+                <prop key="五">五</prop>
+                <prop key="四">四</prop>
+                <prop key="七">七</prop>
+                <prop key="六">六</prop>
+            </props>
+        </property>
+    </bean>
+    <bean name="car" class="com.martin.pojo.Car">
+        <property name="name" value="帕萨特"/>
+        <property name="num" value="33"/>
+    </bean>
+    <bean name="users2" class="com.martin.pojo.User2" scope="prototype">
+        <property name="car" ref="car"></property>
+        <property name="array">
+            <array>
+                <value>1</value>
+                <value>4</value>
+                <value>3</value>
+                <value>2</value>
+                <value>1</value>
+            </array>
+        </property>
+    </bean>
+    <!--   <bean name="users3" class="com.martin.pojo.User3">
+           <constructor-arg index="0" name="username" value="李弟"></constructor-arg>
+           <constructor-arg name="car" ref="car" index="1"></constructor-arg>
+       </bean>-->
+</beans>
